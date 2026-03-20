@@ -30,6 +30,9 @@ class Ball(Turtle):
         # logic for the ball to bounce when it hits the top or bottom wall
         self.y_move *= -1
 
+    def bounce_x(self):
+        # logic for the ball to bounce when it hits the paddel
+        self.x_move *= -1
 
 
 class Padels(Turtle):

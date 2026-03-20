@@ -21,8 +21,10 @@ for pos in POSITIONS:
     paddels.append(padel)
 
 # event listeners for the paddels
-screen.onkey(paddels[1].move_up, "Up")
-screen.onkey(paddels[1].move_down, "Down")
+screen.onkey(paddels[0].move_up, "Up")
+screen.onkey(paddels[0].move_down, "Down")
+screen.onkey(paddels[1].move_up, "w")
+screen.onkey(paddels[1].move_down, "s")
 
 game_on = True
 
@@ -31,5 +33,9 @@ while game_on:
     ball.move()
     if ball.ycor() > 420 or ball.ycor() < -420:
         ball.bounce_y()
+
+    # detect collison with the paddels and bounce the ball
+    if ball.distance(paddels[0]) < 50 or ball.distance(paddels[1]) < 50:
+        ball.bounce_x()
 
 screen.exitonclick()
