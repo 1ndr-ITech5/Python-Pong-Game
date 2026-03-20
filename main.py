@@ -24,4 +24,11 @@ for pos in POSITIONS:
 screen.onkey(paddels[1].move_up, "Up")
 screen.onkey(paddels[1].move_down, "Down")
 
+game_on = True
+
+while game_on:
+    ball.move()
+    if ball.ycor() > 420 or ball.ycor() < -420:
+        ball.bounce_y()
+
 screen.exitonclick()
