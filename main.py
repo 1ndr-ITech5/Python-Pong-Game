@@ -12,7 +12,6 @@ screen.listen()
 
 field = Field()
 field.midfield()
-
 ball = Ball()
 
 paddels = []
@@ -21,11 +20,13 @@ for pos in POSITIONS:
     padel.goto(pos)
     paddels.append(padel)
 
+# event listeners for the paddels
 screen.onkey(paddels[1].move_up, "Up")
 screen.onkey(paddels[1].move_down, "Down")
 
 game_on = True
 
+# controls the flow of the game
 while game_on:
     ball.move()
     if ball.ycor() > 420 or ball.ycor() < -420:
