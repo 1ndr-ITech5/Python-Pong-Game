@@ -30,8 +30,16 @@ game_on = True
 # controls the flow of the game
 while game_on:
     ball.move()
-    
-    paddels[0].AI_move()
+
+    # detect if ball is its danger zone
+    if abs(paddels[0].ycor() - ball.ycor()) < 60:
+        if paddels[0].ycor() > ball.ycor():
+            move_amount = -40
+        elif paddels[0].ycor() < ball.ycor():
+            move_amount = 40
+
+    y_move = paddels[0].ycor() + move_amount
+    paddels[0].goto(paddels[0].xcor(), y_move)
 
     if ball.ycor() > 420 or ball.ycor() < -420:
         ball.bounce_y()

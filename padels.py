@@ -1,5 +1,4 @@
 from turtle import Turtle
-import random
 
 class Padels(Turtle):
     def __init__(self):
@@ -21,15 +20,3 @@ class Padels(Turtle):
         if self.ycor() > -360:
             new_y = self.ycor() - 40
             self.goto(self.xcor(), new_y)
-
-    def AI_move(self):
-        directions = [-40, 40]
-        move_amount = random.choice(directions)
-
-        if self.ycor() > 440:
-            move_amount = -40
-        elif self.ycor() < -360:
-            move_amount = 40
-
-        y_move = self.ycor() + move_amount
-        self.goto(self.xcor(), y_move)
