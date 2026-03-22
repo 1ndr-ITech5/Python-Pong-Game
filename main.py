@@ -2,6 +2,7 @@ from turtle import Screen
 from field import Field
 from ball import Ball
 from padels import Padels
+import time
 
 POSITIONS = [(650, 0), (-650, 0)]
 
@@ -10,6 +11,7 @@ screen.setup(width=1.0, height=1.0)
 screen.bgcolor("black")
 screen.title("Pong Game")
 screen.listen()
+screen.tracer(0)
 
 field = Field()
 field.midfield()
@@ -29,7 +31,15 @@ game_on = True
 
 # controls the flow of the game
 while game_on:
+    screen.update()
+    time.sleep(0.03)
     ball.move()
+
+    if ball.xcor() > 0:
+        if paddels[0].ycor() > 0:
+            move_amount = -20
+        elif paddels[0].ycor() < 0:
+            move_amount = 20
 
     # detect if ball is its danger zone
     if abs(paddels[0].ycor() - ball.ycor()) < 60:
