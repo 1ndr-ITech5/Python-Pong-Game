@@ -2,6 +2,7 @@ from turtle import Screen
 from field import Field
 from ball import Ball
 from padels import Padel1, Padel2
+from scoreboard import Scoreboard
 import time
 
 screen = Screen()
@@ -14,6 +15,7 @@ screen.tracer(0)
 field = Field()
 field.midfield()
 ball = Ball()
+scoreboard = Scoreboard()
 
 # creating both paddels
 my_paddel = Padel1()
@@ -38,5 +40,13 @@ while game_on:
     # detect collison with the paddels and bounce the ball
     if ball.distance(my_paddel) < 50 or ball.distance(ai_paddel) < 50:
         ball.bounce_x()
+
+    # update the score after a goal is scored
+    if ball.xcor() > 800:
+        scoreboard.update_score1()
+        ball.starting_position()
+    elif ball.xcor() < -800:
+        scoreboard.update_score2()
+        ball.starting_position() 
 
 screen.exitonclick()
