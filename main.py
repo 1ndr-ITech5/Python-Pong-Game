@@ -2,7 +2,7 @@ from turtle import Screen
 from field import Field
 from ball import Ball
 from padels import Padel1, Padel2
-from scoreboard import Scoreboard
+from scoreboard import Scoreboard, Clock
 import time
 
 screen = Screen()
@@ -16,6 +16,7 @@ field = Field()
 field.midfield()
 ball = Ball()
 scoreboard = Scoreboard()
+clock = Clock()
 
 # creating both paddels
 my_paddel = Padel1()
@@ -31,6 +32,7 @@ game_on = True
 while game_on:
     screen.update()
     time.sleep(0.03)
+    clock.update_timer()
     ai_paddel.patrol()
     ball.move()
 
@@ -48,5 +50,8 @@ while game_on:
     elif ball.xcor() < -800:
         scoreboard.update_score2()
         ball.starting_position() 
+
+    if clock.timer < 0:
+        game_on = False
 
 screen.exitonclick()
