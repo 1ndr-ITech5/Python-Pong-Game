@@ -25,13 +25,25 @@ class Scoreboard(Turtle):
         self.clear()
         self.write(arg=f"{self.score1} {self.score2}", move=False, align="center", font=("Courier", 88, "bold"))
 
+    def final_score(self):
+        self.clear()
+        if self.score1 > self.score2:
+            self.write(arg="Congrats! You won!", move=False, align="center", font=("Courier", 66, "bold"))
+        elif self.score1 == self.score2:
+            self.write(arg="Draw!", move=False, align="center", font=("Courier", 66, "bold"))
+        else:
+            self.write(arg="Sorry, you lost!", move=False, align="center", font=("Courier", 66, "bold"))
+
+        self.write(arg="Final Score", move=False, align="center", font=("Courier", 66, "bold"))
+        self.write(arg=f"{self.score1} {self.score2}", move=False, align="center", font=("Courier", 66, "bold"))
+
 class Clock(Turtle):
     def __init__(self):
         super().__init__()
         self.penup()
         self.hideturtle()
         self.goto(-360, 390)
-        self.timer = 60
+        self.timer = 20
         self.create_timer()
 
     def create_timer(self):
