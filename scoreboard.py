@@ -26,16 +26,27 @@ class Scoreboard(Turtle):
         self.write(arg=f"{self.score1} {self.score2}", move=False, align="center", font=("Courier", 88, "bold"))
 
     def final_score(self):
-        self.clear()
+        self.penup()
+        self.goto(0, 150)
+        self.pendown()
         if self.score1 > self.score2:
-            self.write(arg="Congrats! You won!", move=False, align="center", font=("Courier", 66, "bold"))
+            self.write(arg="Congrats! You won!", move=False, align="center", font=("Courier", 70, "bold"))
         elif self.score1 == self.score2:
-            self.write(arg="Draw!", move=False, align="center", font=("Courier", 66, "bold"))
+            self.write(arg="Draw!", move=False, align="center", font=("Courier", 70, "bold"))
         else:
-            self.write(arg="Sorry, you lost!", move=False, align="center", font=("Courier", 66, "bold"))
+            self.write(arg="Sorry, you lost!", move=False, align="center", font=("Courier", 70, "bold"))
 
-        self.write(arg="Final Score", move=False, align="center", font=("Courier", 66, "bold"))
-        self.write(arg=f"{self.score1} {self.score2}", move=False, align="center", font=("Courier", 66, "bold"))
+        self.penup()
+        self.goto(0,0)
+        self.pendown()
+        self.write(arg="Final Score", move=False, align="center", font=("Courier", 60, "bold"))
+        self.penup()
+        self.goto(0, -150)
+        self.pendown()
+        self.write(arg=f"{self.score1} {self.score2}", move=False, align="center", font=("Courier", 60, "bold"))
+        self.penup()
+        self.goto(0, -300)
+        self.write(arg="Tap here to restart", move=False, align="center", font=("Courier", 66, "bold"))
 
 class Clock(Turtle):
     def __init__(self):
@@ -43,7 +54,7 @@ class Clock(Turtle):
         self.penup()
         self.hideturtle()
         self.goto(-360, 390)
-        self.timer = 20
+        self.timer = 10
         self.create_timer()
 
     def create_timer(self):

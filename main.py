@@ -1,8 +1,9 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from field import Field
 from ball import Ball
 from padels import Padel1, Padel2
 from scoreboard import Scoreboard, Clock
+from functions import draw_post_game
 import time
 
 screen = Screen()
@@ -12,31 +13,29 @@ screen.title("Pong Game")
 screen.listen()
 screen.tracer(0)
 
-field = Field()
-field.midfield()
-ball = Ball()
-scoreboard = Scoreboard()
-clock = Clock()
-
-# creating both paddels
-my_paddel = Padel1()
-ai_paddel = Padel2()
-
-# event listeners for the paddels
-screen.onkey(my_paddel.move_up, "w")
-screen.onkey(my_paddel.move_down, "s")
-
-# controls the game itself
-game_on = True
-
 # controls if the player wants a new game
 restart_game = True
 
-# variable that keeps the user's answer
-restart_requested = False
-
 
 while restart_game:
+
+    # controls the game itself
+    game_on = True
+
+    #set all components
+    field = Field()
+    field.midfield()
+    ball = Ball()
+    scoreboard = Scoreboard()
+    clock = Clock()
+
+    # creating both paddels
+    my_paddel = Padel1()
+    ai_paddel = Padel2()
+    # event listeners for the paddels
+    screen.onkey(my_paddel.move_up, "w")
+    screen.onkey(my_paddel.move_down, "s")
+
     # controls the flow of the game
     while game_on:
         screen.update()
@@ -63,17 +62,11 @@ while restart_game:
         if clock.timer < 0:
             game_on = False
 
-    # clears all components of the game
-    ball.clear()
-    field.clear()
-    clock.clear()
-    my_paddel.clear()
-    ai_paddel.clear()
-
-    # final result is shown
-    scoreboard.clear()
-    scoreboard.final_score()
+    # call the post game process
+    draw_post_game(ball, my_paddel, ai_paddel, scoreboard, clock, field)
     screen.update()
+
+    restart_game = False
 
     # write in the screen for the start of the new game
     # event listener if clicked
