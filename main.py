@@ -63,7 +63,7 @@ while restart_game:
             game_on = False
 
     # call the post game process
-    draw_post_game(ball, my_paddel, ai_paddel, scoreboard, clock, field)
+    draw_post_game(ball, my_paddel, ai_paddel, scoreboard, clock, fieldw)
     screen.update()
 
     restart_game = False
