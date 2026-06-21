@@ -43,7 +43,7 @@ class Scoreboard(Turtle):
         self.penup()
         self.goto(0, -150)
         self.pendown()
-        self.write(arg=f"{self.score1} {self.score2}", move=False, align="center", font=("Courier", 60, "bold"))
+        self.write(arg=f"{self.score1} - {self.score2}", move=False, align="center", font=("Courier", 60, "bold"))
         self.penup()
         self.goto(0, -300)
         self.write(arg="Tap here to restart", move=False, align="center", font=("Courier", 56, "bold"))
