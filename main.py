@@ -1,8 +1,8 @@
 from turtle import Screen
-from field import Field
-from ball import Ball
-from padels import Padel1, Padel2
-from scoreboard import Scoreboard, Clock
+from components.field import Field
+from components.ball import Ball
+from components.padels import Padel1, Padel2
+from components.scoreboard import Scoreboard, Clock
 from functions import draw_post_game
 import time
 
