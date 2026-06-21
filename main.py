@@ -63,15 +63,25 @@ while restart_game:
             game_on = False
 
     # call the post game process
-    draw_post_game(ball, my_paddel, ai_paddel, scoreboard, clock, fieldw)
+    draw_post_game(ball, my_paddel, ai_paddel, scoreboard, clock, field)
     screen.update()
 
-    restart_game = False
+    waiting_for_click = True
 
-    # write in the screen for the start of the new game
-    # event listener if clicked
-    # event listener if clicked the other button => go out of the game
+    def on_click(x, y):
+        global restart_game, waiting_for_click
+        if -500 < x < 500 and -350 < y < -250:
+            restart_game = True
+            scoreboard.clear()
+            waiting_for_click = False
+        elif -400 < x < 400 and -450 < y < -350:
+            restart_game = False
+            waiting_for_click = False
+
+    screen.onclick(on_click)
     
-
-
-screen.exitonclick()
+    while waiting_for_click:
+        screen.update()
+        time.sleep(0.1)
+        
+    screen.onclick(None)

@@ -46,7 +46,9 @@ class Scoreboard(Turtle):
         self.write(arg=f"{self.score1} {self.score2}", move=False, align="center", font=("Courier", 60, "bold"))
         self.penup()
         self.goto(0, -300)
-        self.write(arg="Tap here to restart", move=False, align="center", font=("Courier", 66, "bold"))
+        self.write(arg="Tap here to restart", move=False, align="center", font=("Courier", 56, "bold"))
+        self.goto(0, -400)
+        self.write(arg="Click here to Exit", move=False, align="center", font=("Courier", 50, "bold"))
 
 class Clock(Turtle):
     def __init__(self):
@@ -54,7 +56,7 @@ class Clock(Turtle):
         self.penup()
         self.hideturtle()
         self.goto(-360, 390)
-        self.timer = 10
+        self.timer = 20
         self.create_timer()
 
     def create_timer(self):
